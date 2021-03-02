@@ -3,24 +3,13 @@ import java.util.*;
 class calculator{
     private int num;
     private char op;
-    private int entPress=0;
-    Scanner in=new Scanner(System.in);
 
-    public void getNum(){
-        System.out.print("Enter number: ");
-        num=in.nextInt();
+    public void getNum(int x){
+        num=x;
     }
 
-    public void getOp(){
-        System.out.print("Enter operation: ");
-        op=in.next().charAt(0);
-        if(op=='e'){
-            entPress=1;
-        }
-    }
-
-    public int putEntPress(){
-        return entPress;
+    public void getOp(char c){
+		op=c;
     }
 
     public void setNum(int res){
