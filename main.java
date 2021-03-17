@@ -22,6 +22,15 @@ class main{
 				entPressed=true;
                 
 				for(int j=0;j<array.size();j++){
+					if(array.get(j).putOp()=='^'){
+						int res=exponent(array.get(j).putNum(),array.get(j+1).putNum());
+						array.get(j+1).setNum(res);
+						array.remove(j);
+						//System.out.println(array.get(j).putNum());
+					}
+				}
+
+				for(int j=0;j<array.size();j++){
                     if(array.get(j).putOp()=='/'){
                         int res=division(array.get(j).putNum(),array.get(j+1).putNum());
                         array.get(j+1).setNum(res);
@@ -62,7 +71,7 @@ class main{
 		int placeHolder=0;//must be at pos = end_of_substring + 1
 		boolean end=false;
 		for(int i=0;i<str.length();i++){
-			if(str.charAt(i)=='+'||str.charAt(i)=='-'||str.charAt(i)=='*'||str.charAt(i)=='/'){
+			if(str.charAt(i)=='+'||str.charAt(i)=='-'||str.charAt(i)=='*'||str.charAt(i)=='/'||str.charAt(i)=='^'){
 				op=str.charAt(i);
 				placeHolder=i;
 				end=false;
@@ -110,4 +119,11 @@ class main{
         y=x/y;
         return y;
     }
+
+	private static int exponent(int x,int y){
+		if(y-->1){
+			x*=exponent(x,y);
+		}
+		return x;
+	}
 }
